@@ -1,0 +1,44 @@
+# HippoMM Default Configuration
+
+# System Parameters
+system:
+  device: "cuda"  # or "cpu"
+
+# Memory Parameters
+memory:
+  # Short-term Memory Parameters
+  max_short_term: 10  # Maximum number of short-term memories
+  
+  # Long-term Memory Parameters
+  max_long_term: 100  # Maximum number of long-term memories
+
+# Storage Configuration
+storage:
+  base_dir: "memory_store"  # Base directory for memory storage
+
+# Processing Parameters
+processing:
+  max_segment_duration: 30.0    # Maximum duration for a memory segment in seconds
+  min_segment_duration: 10.0    # Minimum duration for a memory segment in seconds
+  frame_similarity_threshold: 0.95  # Threshold for determining similar frames
+  audio_silence_threshold: -40    # dB threshold for audio silence detection
+  frame_buffer_size: 32  # Process frames in batches
+
+# API Configuration
+api:
+  # Qwen VL API Configuration
+  qwen:
+    base_url: "http://localhost:8000/v1"
+    api_key: "your_api_key"
+    model_name: "Qwen/Qwen2.5-VL-7B-Instruct"
+  
+  # Reasoning API Configuration (GPT-4)
+  reasoning:
+    api_key: "your_api_key"
+    model_name: "gpt-4o"
+  
+  # Frame Processing API Configuration
+  frame_processing:
+    base_urls:
+      - "http://localhost:8000/v1"
+    api_key: "your_api_key"
