@@ -26,3 +26,5 @@ transformers==4.37.1
 tiktoken
 openai
 tenacity
+librosa
+scikit-image
