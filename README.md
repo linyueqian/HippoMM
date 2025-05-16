@@ -60,17 +60,17 @@ The system handles queries through a dual-pathway memory retrieval process:
 
 1.  **Process videos/audios in a folder:**
     ```bash
-    python hippomm/core/batch_process.py --path /path/to/videos/or/audios --memory_store /path/to/memory_store
+    python -m hippomm.core.batch_process --path /path/to/videos/or/audios --memory_store /path/to/memory_store
     ```
 
 2.  **Query the memory system:**
     ```bash
-    python hippomm/core/ask_question.py --question "What happened in the video?" --memory_store /path/to/memory_store
+    python -m hippomm.core.ask_question --question "What happened in the video?" --memory_store /path/to/memory_store
     ```
 
 3.  **List available `ThetaEvents`:**
     ```bash
-    python hippomm/core/ask_question.py --list --memory_store /path/to/memory_store
+    python -m hippomm.core.ask_question --list --memory_store /path/to/memory_store
     ```
 
 ## Citation
