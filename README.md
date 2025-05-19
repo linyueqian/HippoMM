@@ -30,13 +30,30 @@ The system handles queries through a dual-pathway memory retrieval process:
 
 ## Installation
 
-1.  **Clone the repository:**
+1.  **Install ImageBind (Prerequisite):**
+    ```bash
+    mkdir -p pretrained
+    cd pretrained
+    git clone https://github.com/facebookresearch/ImageBind.git
+    cd ImageBind
+    pip install .
+    cd ..
+    ```
+
+    Download the pretrained model:
+    ```bash
+    mkdir -p imagebind
+    wget https://dl.fbaipublicfiles.com/imagebind/imagebind_huge.pth -O imagebind/imagebind_huge.pth
+    cd ../..
+    ```
+
+2.  **Clone the repository:**
     ```bash
     git clone https://github.com/linyueqian/HippoMM.git
     cd HippoMM
     ```
 
-2.  **Install dependencies:**
+3.  **Install dependencies:**
     It's recommended to use a virtual environment (e.g., `conda` or `venv`).
     ```bash
     # Using conda (example)
@@ -46,7 +63,7 @@ The system handles queries through a dual-pathway memory retrieval process:
     pip install -r requirements.txt
     ```
 
-3.  **Configure the system:**
+4.  **Configure the system:**
     * Copy the default configuration:
         ```bash
         cp config/default_config.yaml config/config.yaml

@@ -217,34 +217,40 @@ class HippocampalMemory:
     def __init__(
         self,
         config: Dict[str, Any],
-        imagebind_path: str = "pretrained/imagebind",
-        whisper_model: str = "distil-large-v3",
-        qwen_path: str = "/home/yl768/ckpt/Qwen/Qwen2.5-VL-7B-Instruct/"
+        imagebind_path: str = None,
+        whisper_model: str = None,
+        qwen_path: str = None,
     ):
-        """Initialize the memory system with foundation models and configuration.
+        """Initialize the hippocampal memory system.
         
         Args:
             config: Configuration dictionary
-            imagebind_path: Path to ImageBind model
-            whisper_model: Name of Whisper model to use
-            qwen_path: Path to QwenVL model
+            imagebind_path: Optional override for ImageBind model path
+            whisper_model: Optional override for Whisper model name
+            qwen_path: Optional override for Qwen VL model path
         """
+        self.config = config
+        
+        # Get model paths from config, with optional overrides
+        self.imagebind_path = imagebind_path or config['models']['imagebind_path']
+        self.whisper_model = whisper_model or config['models']['whisper_model']
+        self.qwen_path = qwen_path or config['models']['qwen_path']
+        
         # initialize foundation models
         print("Initializing HippocampalMemory system...")
-        print(f"Loading ImageBind from: {imagebind_path}")
-        self.imagebind = ImageBind(model_path=imagebind_path)
+        print(f"Loading ImageBind from: {self.imagebind_path}")
+        self.imagebind = ImageBind(model_path=self.imagebind_path)
         print("ImageBind loaded successfully")
         
-        print(f"Loading Whisper model: {whisper_model}")
-        self.whisper = Whisper(model_size=whisper_model)
+        print(f"Loading Whisper model: {self.whisper_model}")
+        self.whisper = Whisper(model_size=self.whisper_model)
         print("Whisper loaded successfully")
         
-        print(f"Loading QwenVL from: {qwen_path}")
-        self.qwen = QwenVL(model_name=qwen_path, config=config)
+        print(f"Loading QwenVL from: {self.qwen_path}")
+        self.qwen = QwenVL(model_name=self.qwen_path, config=config)
         print("QwenVL loaded successfully")
         
         # memory parameters
-        self.config = config
         self.max_short_term = config['memory'].get('max_short_term', 10)
         self.max_long_term = config['memory'].get('max_long_term', 100)
         

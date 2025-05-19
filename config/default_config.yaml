@@ -4,6 +4,12 @@
 system:
   device: "cuda"  # or "cpu"
 
+# Model Paths
+models:
+  imagebind_path: "pretrained/imagebind"  # Path to ImageBind model
+  whisper_model: "distil-large-v3"        # Whisper model name
+  qwen_path: "pretrained/Qwen/Qwen2.5-VL-7B-Instruct"  # Path to Qwen VL model
+
 # Memory Parameters
 memory:
   # Short-term Memory Parameters
