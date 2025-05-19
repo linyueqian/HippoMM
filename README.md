@@ -73,6 +73,46 @@ The system handles queries through a dual-pathway memory retrieval process:
         * API keys and base URLs for any external services (e.g., OpenAI API for reasoning or VLM endpoints).
         * Desired storage directories (`storage.base_dir`, etc.).
 
+## Model Serving
+
+HippoMM requires several model serving endpoints to be running for full functionality. These can be set up using either sglang or vllm:
+
+### Qwen VL Model Serving
+
+The system uses Qwen2.5-VL-7B-Instruct for visual-language processing. You can serve it using either:
+
+1. **Using vllm (Recommended):**
+   ```bash
+   python -m vllm.entrypoints.api_server \
+     --model pretrained/Qwen/Qwen2.5-VL-7B-Instruct \
+     --host localhost \
+     --port 8000
+   ```
+
+2. **Using sglang:**
+   ```bash
+   sglang serve \
+     --model pretrained/Qwen/Qwen2.5-VL-7B-Instruct \
+     --port 8000
+   ```
+
+Update the `api.qwen.base_url` in your config file to point to the serving endpoint (default: "http://localhost:8000/v1").
+
+### Frame Processing Service
+
+The frame processing service handles visual analysis tasks. Set it up similarly:
+
+```bash
+python -m vllm.entrypoints.api_server \
+  --model pretrained/Qwen/Qwen2.5-VL-7B-Instruct \
+  --host localhost \
+  --port 8001
+```
+
+Update the `api.frame_processing.base_urls` in your config file accordingly.
+
+Note: Make sure to have enough GPU memory to serve these models.
+
 ## Example Usage
 
 1.  **Process videos/audios in a folder:**

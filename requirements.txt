@@ -28,3 +28,4 @@ openai
 tenacity
 librosa
 scikit-image
+qwen-vl-utils[decord]==0.0.8
