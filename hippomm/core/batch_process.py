@@ -753,10 +753,10 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description="batch process videos using hippocampalmemory")
-    parser.add_argument("path", help="path to video file or folder containing videos")
+    parser.add_argument("--path", help="path to video file or folder containing videos")
     parser.add_argument("--config", help="path to config file", default="config/default_config.yaml")
     parser.add_argument("--skip-existing", action="store_true", help="skip already processed videos")
-    parser.add_argument("--memory-store", help="path to store memory files (overrides config if provided)")
+    parser.add_argument("--memory_store", help="path to store memory files (overrides config if provided)")
     parser.add_argument("--checkpoint-interval", type=int, help="save checkpoint every n videos/frames", default=5)
     parser.add_argument("--sort-by", choices=["name", "time", "size"], default="name",
                       help="how to sort videos: by name, modification time, or file size")
