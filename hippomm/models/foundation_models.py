@@ -224,7 +224,7 @@ class QwenVL:
         Args:
             model_name: Path to the model
         """
-        self.client = OpenAI(base_url="http://localhost:8000/v1", api_key="sk-IrR7Bwxtin0haWagUnPrBgq5PurnUz86")
+        self.client = OpenAI(base_url="http://localhost:8000/v1", api_key="sk-")
         models = self.client.models.list()
         model = models.data[0].id
         print(f"Using model: {model}")
