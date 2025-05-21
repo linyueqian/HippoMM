@@ -48,8 +48,8 @@ class ImageBind(nn.Module):
     def load_data(
         self,
         inputs: Dict[str, Union[List[str], List[Image.Image], np.ndarray]],
-        modalities: List[ModalityType]
-    ) -> Dict[ModalityType, torch.Tensor]:
+        modalities,
+    ):
         """
         Load and transform data for different modalities.
         
@@ -115,8 +115,8 @@ class ImageBind(nn.Module):
 
     def forward(
         self, 
-        inputs: Dict[ModalityType, torch.Tensor]
-    ) -> Dict[ModalityType, torch.Tensor]:
+        inputs,
+    ):
         """
         Forward pass through the ImageBind model.
         
