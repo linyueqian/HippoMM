@@ -11,6 +11,8 @@ The system aims to address the challenge of comprehending extended audiovisual e
 
 ![HippoMM Architecture](figs/method.png)
 
+**Active Maintainers:** [Yueqian Lin](https://github.com/linyueqian), [Yudong Liu](https://github.com/1999Lyd)
+
 ## Core Concepts
 
 HippoMM implements a biologically-inspired multimodal memory system with four main processing stages:
